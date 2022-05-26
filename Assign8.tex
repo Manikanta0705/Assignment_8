@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+%packages:
+% \usepackage{tfrupee}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{gensymb}
+% \usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+% \usepackage[latin1]{inputenc}                                 
+% \usepackage{color}                                            
+% \usepackage{array}                                            
+% \usepackage{longtable}                                        
+% \usepackage{calc}                                             
+% \usepackage{multirow}                                         
+% \usepackage{hhline}                                           
+% \usepackage{ifthen}
+% \usepackage{caption} 
+% \captionsetup[table]{skip=3pt}  
+ \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+ \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+% %\renewcommand{\thefigure}{\arabic{table}}
+% \renewcommand{\thetable}{\arabic{table}}      
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}   
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 8} 
+\author{Manikanta Uppulapu}
+\date{\today}
+% \logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+
+\section{Problem Statement}
+\begin{frame}{Problem Statement}
+    \begin{block} {QUESTION}A player wins \$1 if he throws two heads in succession, otherwise he loses two quarters.
+If the game is repeated 50 times, what is the probability that the net gain or loss exceeds\\
+(a) \$1 (b) \$5
+    \end{block}
+\end{frame}
+
+
+
+\section{Given}
+\begin{frame}{Given}
+Let's denote the situation of the problem by random variable's $X$ and $Y$  such that $X\in \cbrak{0,1}$,$Y\in \cbrak{0,1}$\\
+where,\\
+\begin{table}[ht!]
+    \centering
+    \input{table}
+    \caption{}
+\label{table:table1}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+	Consider an experiment consisting of $50$ Bernoulli trials and denote the number of two heads in succession obtained by a binomial random variable $Y \in \cbrak{0,1,\ldots,50}$. This can be expressed as a binomial distribution with probability mass function given by:
+	\begin{align}
+		p_Y(k) = \binom{n}{k} (1-p)^{n-k} p^k,~ 0 \le k \le n
+	\end{align}
+	where $n = 50$ and $p = 0.25$
+	\end{frame}
+	
+\section{Solution}
+\begin{frame}{Solution}
+(a) Let k represent the number of wins required in 50 games so that
+the net gain or loss does not exceed \$1. This gives the net gain to be 
+\begin{align}
+    -1 &< k - \frac{50-k}{2} <  1\\
+     16 &< k < 17.3 \\
+      k &= 17
+      \end{align}
+      The desired probability is given by:
+	\begin{align}
+		p_{X=0}(17)&= \binom{50}{17} (1-0.25)^{33} (0.25)^{17} \\
+		&=0.432
+\end{align}
+\therefore \pr{X=1} = 1-0.432 = 0.568
+\end{frame}
+
+\begin{frame}{Solution}
+(a) Let k represent the number of wins required in 50 games so that
+the net gain or loss does not exceed \$5. This gives 
+\begin{align}
+    -5 &< k - \frac{50-k}{2} <  5\\
+     13.3 &< k < 20 
+      \end{align}
+      The desired probability is given by:
+	\begin{align}
+		p_{Y=0}(k)&=\sum_{k=14}^{19} \binom{50}{n} (1-0.25)^{n-k} (0.25)^{k}\\
+		&=0.349
+\end{align}
+\therefore \pr{Y=1} = 1-0.349 = 0.651
+\end{frame}
+\end{document}
